@@ -7,16 +7,21 @@ function createWindow () {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    maximizable:true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('app/index.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  //  mainWindow.webContents.openDevTools()
+
+  //  mainWindow.loadURL("https://electron.org.cn/demo.html")
+   
+  //  mainWindow.on('closed',function(){mainWindow=null;})
 }
 
 // This method will be called when Electron has finished
@@ -24,12 +29,21 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
+
+  // window.addEventListener('DOMContentLoaded', () => {
+  //   var  btn = document.getElementById('btn1');
+  //   btn.click=function()
+  //   {
+  //     console.log('success');
+  //   }
+  // });
   
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
+    if (BrowserWindow.getAllWindows().length === 0) createWindow(); 
+  });
+ 
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
