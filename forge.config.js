@@ -1,6 +1,12 @@
-module.exports = {
-    "packagerConfig": {
+const path = require('path');
 
+module.exports = {
+    "iconUrl":  path.join(__dirname, "/asset/ico/favicon.ico"),
+    "loadingGif": path.join(__dirname, "/asset/img/loading.gif"),
+    "out":"./dist",
+    "packagerConfig": {
+        "icon": path.join(__dirname, "/asset/ico/favicon.ico"),
+        "out":"./dist"
     },
     "makers": [{
             "name": "@electron-forge/maker-squirrel",

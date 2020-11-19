@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;script-src * 'unsafe-inline'">
     <title>Hello World!</title>
+    <link rel="stylesheet" href="../asset/css/demo.css"> 
+    <link rel="stylesheet" href="../asset/css/nav.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
+ 
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
@@ -19,9 +22,29 @@
 
     <div>
       <button id="btn1">新窗口</button>
+      <button id="advanced-noti">通知</button>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="basic-notification-demo-toggle" class="js-container-target demo-toggle-button">Basic notification
+          <div class="demo-meta u-avoid-clicks">Supports: Win 7+, macOS, Linux (that supports libnotify)<span class="demo-meta-divider">|</span> Process: Renderer</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="basic-noti">View demo</button>
+          </div>
+          <p>This demo demonstrates a basic notification. Text only.</p>
+          <h5>Renderer Process</h5>
+          <pre><code data-path="./test.js"></pre></code>
+        </div>
+      </div>
     </div>
 
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
+    <script type="text/javascript">
+      require('./app/test.js')
+    </script>
   </body>
 </html>

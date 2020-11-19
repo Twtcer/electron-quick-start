@@ -5,7 +5,4 @@
 // selectively enable features needed in the rendering
 // process.
 
-function newForm()
-{
-    console.log('success');
-}
+ 
